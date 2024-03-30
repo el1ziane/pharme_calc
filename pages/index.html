@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmeCalc</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Adicione este estilo para ocultar o modal por padrão */
+    </style>
+</head>
+<!--cabeçalho menu de interração-->
+
+<body>
+    <header class="cabecalho">
+        <nav class="cabecalho-menu">
+            <a href="/">
+                <img class="cabecalho-img" src="/img/MEd FArme.png" alt="Logo da PharmeMed">
+            </a>
+            <ul>
+                <li>
+                    <a href="index.html" class="branco">Página Inicial</a>
+                </li>
+
+                <li>
+                    <a href="about.html" class="branco">Sobre</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <!--Texto de introdução para o usuario-->
+    <section>
+        <p class="text-inicial">
+            "Descubra os principais medicamentos, organizados por categorias, para personalizar a dosagem de acordo com
+            as características individuais, seja para orientar médicos, pacientes ou aqueles que desejam aprender mais
+            sobre seus tratamentos. Agora calcular medicamentos ficou mais fácil... Escolha o medicamento e nós iremos
+            te ajudar!
+            "
+        </p>
+    </section>
+    <nav class="conteudo">
+        <!--Botões principais do sistema-->
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModalPesquisa()">
+                <img class="imagens-botao" src="/img/icons8-lupa-60.png" alt="botão de pesquisa">Pesquisa...
+            </button>
+        </div>
+        <div class="modal" id="modal1">
+
+            <div class="modal-content">
+                <span class="close-pesquisa" onclick="fecharModalPesquisa()">&times;</span>
+                <h1>Pesquisa de Medicamentos</h1>
+                <h2>Digite o medicamento que deseja pesquisar:</h2>
+                <input type="text" id="termoPesquisa">
+                <button class="btnPesquisar" onclick="pesquisarMedicamento()">Pesquisar</button>
+            </div>
+        </div>
+        <div id="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <iframe id="modal-iframe" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Antibioticos')">
+                <img class="imagens-botao" src="/img/antibioticos1.png" alt="imagens de comprimidos">
+                Antibióticos
+            </button>
+        </div>
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Anti-Inflamatorios')">
+                <img class="imagens-botao" src="/img/icons8-cápsula-64.png" alt="imagem">
+                Anti-Inflamatórios
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Anti-Convulsivantes')">
+                <img class="imagens-botao" src="/img/icons8-cérebro-60.png" alt="imagem">
+                Anti-Convulsivantes
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Anti-Histaminicos')">
+                <img class="imagens-botao" src="/img/anti-histaminicos.png" alt="imagem">
+                Anti-Histamínicos
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Anti-Fungicos')">
+                <img class="imagens-botao" src="/img/icons8-mofo-60.png" alt="imagem">
+                Anti-Fúngicos
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Anti-Parasitarios')">
+                <img class="imagens-botao" src="/img/parasita.png" alt="imagem">
+                Anti-Parasitários
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Broncodilatadores')">
+                <img class="imagens-botao" src="/img/inalador.png" alt="imagem">
+                Broncodilatadores
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Corticosteroides')">
+                <img class="imagens-botao" src="/img/remedio.png" alt="imagem">
+                Corticosteróides
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Laxativos')">
+                <img class="imagens-botao" src="/img/desentupidor.png" alt="imagens">
+                Laxativos
+            </button>
+        </div>
+
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Sintomaticos')">
+                <img class="imagens-botao" src="/img/icons8-allergy-60.png" alt="imagem">
+                Sintomáticos
+            </button>
+        </div>
+        <div class="conteudo-botao">
+            <button class="conteudo-principal-botao" onclick="abrirModal('Intravenosa')"><img class="imagens-botao"
+                    src="/img/icons8-bladder-64.png" alt="imagem">Intravenosa</button>
+        </div>
+    </nav>
+    <footer class="rodape">
+        <p>Copyright &copy; 2023 PharmeCalc</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

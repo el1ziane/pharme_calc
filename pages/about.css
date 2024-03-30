@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+nav {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+ul li a:hover {
+  color: #0dd4db;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+
+}
+
+div {
+  height: 100%;
+  width: 100%;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px;
+  display: table;
+}
+
+.cabecalho {
+  font-family: 'Sarala', sans-serif;
+  color: #FFF2E7;
+  font-weight: 400;
+  font-size: 18px
+}
+
+.cabecalho-img {
+  height: 100px;
+  border-radius: 100%;
+}
+
+.cabecalho-menu {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+/* Rodapé */
+
+.rodape {
+  background-color: #0dd4db;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rodape p {
+  font-size: 16px;
+  font-family: 'Sarala', sans-serif;
+  font-weight: 400;
+  color: #FFF2E7;
+}
+
+.rodape a {
+  text-decoration: none;
+  color: #FFF2E7;
+}
+
+/* Estilos Globais */
+body {
+  font-family: 'Sarala', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Estilos da Seção Sobre */
+.sobre {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sobre h2 {
+  font-family: 'Righteous', sans-serif;
+  font-size: 24px;
+  color: #0dd4db;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sobre p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.sobre a {
+  color: #0dd4db;
+}

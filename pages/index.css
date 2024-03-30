@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+nav {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+ul li a:hover {
+  color: #0dd4db;
+}
+
+.cabecalho {
+  font-family: 'Sarala', sans-serif;
+  color: #FFF2E7;
+  font-weight: 400;
+  font-size: 18px
+}
+
+.cabecalho-img {
+  height: 100px;
+  border-radius: 100%;
+}
+
+.cabecalho-menu {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: stretch;
+
+}
+
+div {
+  height: 100%;
+  width: 100%;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px;
+  display: table;
+}
+
+p {
+  text-align: center;
+  font-family: 'Sarala';
+  font-size: medium;
+  width: 100%;
+}
+
+
+.conteudo {
+  margin-bottom: 100px;
+  border-top: 0.5px solid #FFF2E7;
+  display: flex;
+  flex-direction: wrap;
+  flex-wrap: wrap;
+  text-align: left;
+  font-family: 'Sarala';
+  font-size: medium;
+}
+
+.conteudo-principal {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 200px 200px;
+  align-items: center;
+  justify-self: center;
+  gap: 10px;
+}
+
+.text-inicial {
+  background: #0dd4dbab;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #000;
+  word-wrap: break-word;
+  padding: 20px;
+ 
+}
+
+.conteudo-principal-botao {
+  background-color: #ffffff;
+  width: 250px;
+  height: 200px;
+  border: 2px solid #000000e3;
+  box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: 'Sarala', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-size: 20l, l, pkjnnoijiopx;
+  color: #2F2325;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.conteudo-principal-botao:hover {
+  border: 2px solid #0dd4db;
+}
+
+.imagens-botao {
+  text-align: center;
+  border-radius: 10%;
+  width: 50px;
+  height: 50px;
+  margin: 25px;
+}
+
+.conteudo-inicial {
+  font-family: 'Sarala';
+  font-size: medium;
+}
+
+.conteudo-botao {
+  flex-basis: 20%;
+  flex-grow: 2;
+}
+
+.text {
+  text-align: left;
+  font-family: 'Sarala';
+  font-size: medium;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modal-iframe {
+  width: 100%;
+  height: 80vh;
+  border: none;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  margin-top: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  text-align: center;
+}
+
+input[type="text"],
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.btnPesquisar {
+  background-color: #0dd4db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+
+}
+
+.btnPesquisar:hover {
+  background-color: #f7c2e2e1;
+  cursor: pointer;
+}
+
+.conteudo-principal-botao:hover {
+  background-color: #0dd4dbab;
+  cursor: pointer;
+}
+
+
+.close-pesquisa {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  float: right;
+  position: absolute;
+  top: 10px;
+  /* Define a distância do topo */
+  right: 10px;
+  /* Define a distância da direita */
+  cursor: pointer;
+}
+
+.close-pesquisa:hover,
+.close-pesquisa:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rodape {
+  background-color: #0dd4db;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rodape p {
+  font-size: 16px;
+  font-family: 'Sarala', sans-serif;
+  font-weight: 400;
+  color: #FFF2E7;
+}
+
+.rodape a {
+  text-decoration: none;
+  color: #FFF2E7;
+}

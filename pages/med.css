@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Sarala', sans-serif;
+}
+
+nav {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+ul li a:hover {
+  color: #0dd4db;
+}
+
+div {
+  height: 100%;
+  width: 100%;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px;
+  display: table;
+}
+
+p {
+  text-align: center;
+  font-family: 'Sarala';
+  font-size: medium;
+  width: 100%;
+}
+
+.cabecalho {
+  font-family: 'Sarala', sans-serif;
+  color: #FFF2E7;
+  font-weight: 400;
+  font-size: 18px
+}
+
+.cabecalho-img {
+  height: 100px;
+  border-radius: 100%;
+}
+
+.cabecalho-menu {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.descricao-medicamento.descricao-visivel {
+  display: block;
+}
+
+.descricao-medicamento.descricao-mostrada {
+  display: block;
+}
+
+/* Estilo para a lista de medicamentos */
+#medicamentos {
+  list-style-type: none;
+  padding: 0;
+}
+
+#medicamentos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+#medicamentos li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+
+}
+
+/* Estilo para o botão redondo com seta */
+.botao-seta {
+  background-color: #0dd4db;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.botao-seta:hover {
+  background-color: #f7c2e2e1;
+}
+
+.botao-seta:hover svg {
+  transform: rotate(-90deg);
+}
+
+.botao-seta svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  transform: rotate(-90deg);
+}
+
+.descricao-medicamento {
+  display: none;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-family: 'Sarala', sans-serif;
+}
