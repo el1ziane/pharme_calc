@@ -1,104 +1,80 @@
- // Função para obter parâmetros da URL
  function obterParametroURL(nome) {
      const urlParams = new URLSearchParams(window.location.search);
      return urlParams.get(nome);
  }
-
- // Função para exibir o nome da categoria na página
  function exibirNomeCategoria() {
      const categoria = obterParametroURL('categoria');
      const elementoCategoria = document.getElementById('categoria');
      elementoCategoria.textContent = categoria;
  }
-
- // Função para listar os medicamentos da categoria selecionada
  function listarMedicamentos() {
      const categoria = obterParametroURL('categoria');
      const medicamentosPorCategoria = {
-         'antibioticos': ['Azitromicina', 'Amoxicilina + Clavulanato', 'Cefalexina',
-             'Sulfametoxazol + Trimetoprima', 'Eritromicina'
-         ],
+         'antibioticos': ['Azitromicina', 'Amoxicilina + Clavulanato', 'Cefalexina', 'Sulfametoxazol + Trimetoprima', 'Eritromicina'],
          'anti-inflamatorios': ['Cetoprofeno', 'Diclofenaco', 'Ibuprofeno', 'Nimesulida'],
-
          'anti-convulsivantes': ['Carbamazepina', 'Diazepam', 'Fenitoína', 'Fenobarbital'],
-
          'anti-fungicos': ['Cetoconazol', 'Fluconazol', 'Nistatina'],
-
          'anti-histaminicos': ['Dexclorfeniramina', 'Loratadina'],
-
          'anti-parasitarios': ['Albendazol', 'Mebendazol', 'Metronidazol'],
          'broncodilatadores': ['Acebrofilina', 'Terbutalina'],
-
          'corticosteroides': ['Dipropionato de Betametasona Sulfato de Gentamicina', 'Acetato de Hidrocortisona'],
-
          'laxativos': ['Hidróxido de Magnésio', 'Lactulose', 'Óleo Mineral'],
-
          'sintomaticos': ['Ambroxol', 'Bromoprida', 'Dipirona Sódica', 'Metoclopramida'],
          'intravenosa': ['Ácido Épsilon e Aminocapróico', 'Adenosina', 'Mesilato de Codergocrina', 'Enoxaparina Sódica']
      };
 
-     const medicamentos = medicamentosPorCategoria[categoria.toLowerCase()]; // Convertendo para minúsculas para garantir a correspondência
+     function removerAcentos(texto) {
+         return texto.toLowerCase()
+             .normalize('NFD')
+             .replace(/[\u0300-\u036f]/g, '');
+     }
+     const categoriaFormatada = removerAcentos(categoria);
+     medicamentos = medicamentosPorCategoria[categoriaFormatada] || [];
      const listaMedicamentos = document.getElementById('medicamentos');
      listaMedicamentos.innerHTML = '';
 
-     if (medicamentos) { // Verifica se existem medicamentos para a categoria selecionada
+     if (medicamentos) {
          medicamentos.forEach(medicamento => {
              const itemLista = document.createElement('li');
 
-             // Dentro da função listarMedicamentos, quando criar o linkMedicamento
              const linkMedicamento = document.createElement('a');
              linkMedicamento.textContent = medicamento;
              linkMedicamento.setAttribute('data-medicamento', medicamento);
-             linkMedicamento.href = `calculo.html?medicamento=${medicamento}`; // Adiciona o link para a página "calculo.html"
+             linkMedicamento.href = `calculo.html?medicamento=${encodeURIComponent(medicamento)}`;
 
-             // Div para a descrição do medicamento
              const descricaoMedicamento = document.createElement('div');
              descricaoMedicamento.className = 'descricao-medicamento';
-             descricaoMedicamento.textContent = obterDescricaoMedicamento(medicamento); // Função para obter a descrição do medicamento
+             descricaoMedicamento.textContent = obterDescricaoMedicamento(medicamento);
 
-             // Botão redondo com seta
+             const novaLinha = document.createElement('li');
+             novaLinha.className = 'descricao-medicamento';
+             novaLinha.textContent = obterDescricaoMedicamento(medicamento);
+             novaLinha.appendChild(descricaoMedicamento);
+
              const botaoSeta = document.createElement('button');
              botaoSeta.className = 'botao-seta';
-             botaoSeta.innerHTML =
-                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>';
+             botaoSeta.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>';
 
-             // Função para lidar com o clique no botão de seta
-             botaoSeta.onclick = () => {
-                 descricaoMedicamento.classList.toggle('descricao-mostrada');
-                 botaoSeta.querySelector('svg').style.transform = descricaoMedicamento.classList.contains('descricao-mostrada') ? 'rotate(0)' : 'rotate(-90deg)';
-                 adicionarDescricao(descricaoMedicamento); // Chama a função para adicionar a descrição
-             };
-
-             // Função para adicionar a descrição do medicamento
-             function adicionarDescricao(descricaoMedicamento) {
-                 const divDescricao = listaMedicamentos.querySelector('.descricao-medicamento');
-                 if (descricaoMedicamento.classList.contains('descricao-mostrada')) {
-                     if (!divDescricao) {
-                         const novaLinha = document.createElement('li');
-                         novaLinha.className = 'descricao-medicamento';
-                         novaLinha.textContent = obterDescricaoMedicamento(medicamento);
-                         listaMedicamentos.insertBefore(novaLinha, itemLista.nextSibling);
-                     }
+             botaoSeta.addEventListener('click', () => {
+                 if (novaLinha.style.display === 'none' || novaLinha.style.display === '') {
+                     novaLinha.style.display = 'block';
+                     botaoSeta.querySelector('svg').style.transform = 'rotate(90deg)';
+                     listaMedicamentos.insertBefore(novaLinha, itemLista.nextSibling);
                  } else {
-                     if (divDescricao) {
-                         divDescricao.remove();
-                     }
+                     novaLinha.style.display = 'none';
+                     botaoSeta.querySelector('svg').style.transform = 'rotate(0deg)';
                  }
-             }
-
+             });
              itemLista.appendChild(linkMedicamento);
              itemLista.appendChild(botaoSeta);
              listaMedicamentos.appendChild(itemLista);
          });
-
      } else {
          const itemLista = document.createElement('li');
          itemLista.textContent = 'Nenhum medicamento encontrado para esta categoria.';
          listaMedicamentos.appendChild(itemLista);
      }
  }
-
- // Função para obter a descrição do medicamento
  function obterDescricaoMedicamento(medicamento) {
      switch (medicamento) {
          case 'Azitromicina':
@@ -177,7 +153,5 @@
              return 'Descrição do medicamento não encontrada.';
      }
  }
-
- // Chamadas de função para exibir o nome da categoria e listar os medicamentos ao carregar a página
  exibirNomeCategoria();
  listarMedicamentos();
