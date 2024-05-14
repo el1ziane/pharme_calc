@@ -1,29 +1,28 @@
-// Função para abrir o modal com o conteúdo da categoria selecionada
 function abrirModal(categoria) {
     const modal = document.getElementById('modal');
     const modalIframe = document.getElementById('modal-iframe');
     modalIframe.src = `medicamento.html?categoria=${encodeURIComponent(categoria)}`;
     modal.style.display = 'block';
 
-    // Adicionar evento de clique aos links dentro do iframe
+
     modalIframe.onload = function () {
         const linksMedicamentos = modalIframe.contentWindow.document.querySelectorAll(
             'a[data-medicamento]');
         linksMedicamentos.forEach(link => {
             link.addEventListener('click', function (event) {
-                event.preventDefault(); // Impede o comportamento padrão do link
+                event.preventDefault();
                 const medicamento = this.getAttribute('data-medicamento');
                 abrirPaginaCalculo(medicamento);
             });
         });
     };
 }
-// Função para abrir a página de cálculo em uma nova aba ou janela
+
 function abrirPaginaCalculo(medicamento) {
     const urlCalculo = `calculo.html?medicamento=${encodeURIComponent(medicamento)}`;
-    window.open(urlCalculo, '_blank'); // Abre em uma nova aba ou janela
+    window.open(urlCalculo, '_blank');
 }
-// Função para fechar o modal
+
 function fecharModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
@@ -31,12 +30,12 @@ function fecharModal() {
 
 function abrirModalPesquisa() {
     const modal = document.getElementById('modal1');
-    modal.style.display = 'block'; // Exibe o modal
+    modal.style.display = 'block';
 }
 
 function fecharModalPesquisa() {
     const modal = document.getElementById('modal1');
-    modal.style.display = 'none'; // Oculta o modal
+    modal.style.display = 'none';
 }
 
 function pesquisarMedicamento() {
@@ -46,7 +45,7 @@ function pesquisarMedicamento() {
         if (medicamentoEncontrado) {
             const confirmarCalculo = confirm('Deseja calcular a dosagem para o medicamento selecionado?');
             if (confirmarCalculo) {
-                abrirPaginaCalculo(medicamentoEncontrado); // Redireciona para a página de cálculo
+                abrirPaginaCalculo(medicamentoEncontrado);
             }
         } else {
             alert('Medicamento não encontrado.');
@@ -56,12 +55,10 @@ function pesquisarMedicamento() {
 
 function abrirPaginaCalculo(medicamento) {
     const urlCalculo = `calculo.html?medicamento=${encodeURIComponent(medicamento)}`;
-    window.open(urlCalculo, '_blank'); // Abre em uma nova aba ou janela
+    window.open(urlCalculo, '_blank');
 }
 
 function filtrarMedicamentos(termoPesquisa) {
-    // Implemente sua lógica de filtragem aqui
-    // Este é apenas um exemplo estático
     const medicamentosFiltrados = {
         'antibioticos': ['Azitromicina', 'Amoxicilina + Clavulanato', 'Cefalexina',
             'Sulfametoxazol + Trimetoprima', 'Eritromicina'
@@ -94,5 +91,24 @@ function filtrarMedicamentos(termoPesquisa) {
         }
     }
 
-    return null; // Retorna null se nenhum medicamento for encontrado
+    return null;
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let contador = localStorage.getItem("contador");
+    if (contador === null) {
+
+        contador = 0;
+    } else {
+        contador = parseInt(contador);
+    }
+
+    contador++;
+
+    // Atualizar o valor do contador na página
+    document.getElementById("contador").textContent = contador;
+
+    // Salvar o novo valor do contador no armazenamento local
+    localStorage.setItem("contador", contador.toString());
+});
